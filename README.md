@@ -2,8 +2,8 @@
 
 Site statique (HTML/CSS/JS) hébergé sur GitHub Pages.
 
-- `main` -> **prod** : https://julienmelijm-stack.github.io/mariage-site/
-- `test` -> **test** : https://julienmelijm-stack.github.io/mariage-site/test/
+- `main` -> **prod** : https://alexia-julien.github.io/mariage/
+- `test` -> **test** : https://alexia-julien.github.io/mariage/test/
 
 Workflow : modification -> commit sur `test` -> validation -> merge `test` dans `main`.
 Le déploiement est géré par `.github/workflows/pages.yml`.
