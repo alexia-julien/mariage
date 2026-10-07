@@ -40,7 +40,7 @@ jobs:
           rsync -a --exclude='.git' --exclude='.github' --exclude='README.md' test/ _site/test/
           printf 'User-agent: *\nAllow: /\n' > _site/robots.txt
           # L'environnement de test ne doit jamais être indexé par les moteurs de recherche
-          sed -i 's|<head>|<head>\n<meta name="robots" content="noindex, nofollow">|' _site/test/*.html
+          sed -i 's|<head>|<head>\n<meta name="robots" content="noindex, nofollow">|' $(find _site/test -name '*.html')
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
