@@ -128,9 +128,9 @@
 
 <header>
   <nav class="nav">
-    <a class="monogram" href="index.html#skip" aria-label="Alexia et Julien — retour au faire-part">A&nbsp;<span class="amp">&amp;</span>&nbsp;J</a>
+    <a class="monogram" href="index.html" aria-label="Alexia et Julien — retour au faire-part">A&nbsp;<span class="amp">&amp;</span>&nbsp;J</a>
     <div class="menu">
-      <a href="index.html#skip"><span class="fr">Accueil</span><span class="pt">Início</span></a>
+      <a href="index.html"><span class="fr">Accueil</span><span class="pt">Início</span></a>
       <a href="hebergements.html" aria-current="page"><span class="fr">Hébergement</span><span class="pt">Hospedagem</span></a>
     </div>
     <div class="lang-toggle" role="group" aria-label="Langue / Idioma">
@@ -192,10 +192,6 @@
   langBtns.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.getAttribute('data-set-lang')); }); });
   try{ var sl = localStorage.getItem('lang'); if(sl === 'fr' || sl === 'pt') setLang(sl); }catch(e){}
 
-  // retour à l'accueil : l'enveloppe ne se rejoue pas
-  document.querySelectorAll('a[href^="index.html"]').forEach(function(a){
-    a.addEventListener('click', function(){ try{ sessionStorage.setItem('gateOpened', '1'); }catch(e){} });
-  });
 </script>
 </body>
 </html>
