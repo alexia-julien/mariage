@@ -98,7 +98,6 @@
   .gallery-dots{display:flex;justify-content:center;align-items:center;gap:.55rem;margin:.2rem 0 0}
   .gallery-dots button{width:9px;height:9px;padding:0;border:0;border-radius:999px;background:var(--line);cursor:pointer;transition:background .2s,width .2s}
   .gallery-dots button[aria-current="true"]{background:var(--sage-deep);width:22px}
-  .gallery-hint{text-align:center;font-size:.82rem;letter-spacing:.06em;color:var(--ink-soft);margin:.5rem 0 0}
   .gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .6s ease}
   .gallery figure:hover img{transform:scale(1.04)}
 
@@ -130,7 +129,6 @@
   }
   @media (min-width:821px){
     .gallery figure{flex:0 0 calc(50% - 7px);width:auto}
-    .gallery-hint{display:none}
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -207,7 +205,6 @@
       <figure><img loading="lazy" src="assets/galerie-4.jpg" alt="Escalier d'honneur du château"></figure>
     </div>
     <div class="gallery-dots" id="gallery-dots" role="group" aria-label="Photos"></div>
-    <p class="gallery-hint"><span class="fr">Faites glisser pour voir les photos</span><span class="pt">Deslize para ver as fotos</span> →</p>
 
     <div class="venir">
       <div class="section-head" style="margin-bottom:1.6rem">
