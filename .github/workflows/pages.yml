@@ -35,10 +35,12 @@ jobs:
       - name: Assemble site
         run: |
           mkdir _site
-          rsync -a --exclude='.git' --exclude='.github' prod/ _site/
+          rsync -a --exclude='.git' --exclude='.github' --exclude='README.md' prod/ _site/
           mkdir _site/test
-          rsync -a --exclude='.git' --exclude='.github' test/ _site/test/
-          printf 'User-agent: *\nDisallow: /test/\n' > _site/robots.txt
+          rsync -a --exclude='.git' --exclude='.github' --exclude='README.md' test/ _site/test/
+          printf 'User-agent: *\nAllow: /\n' > _site/robots.txt
+          # L'environnement de test ne doit jamais être indexé par les moteurs de recherche
+          sed -i 's|<head>|<head>\n<meta name="robots" content="noindex, nofollow">|' _site/test/*.html
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

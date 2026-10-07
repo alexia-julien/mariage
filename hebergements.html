@@ -2,6 +2,8 @@
 <html lang="fr" data-lang="fr">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://docs.google.com https://www.google.com; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hébergements — Alexia &amp; Julien</title>
 <meta name="description" content="Où dormir autour du Domaine de l'Abbaye de Vauluisant (Courgenay, 89190) pour le mariage d'Alexia & Julien, 7 & 8 août 2027.">
@@ -166,7 +168,7 @@
       <div class="divider-heart" aria-hidden="true"><span class="dh-line"></span><svg class="dh-heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.05-4.35-9.5-8.5C.7 9 2.2 5 6.3 5c2 0 3.6 1.1 5.7 3.6C14.1 6.1 15.7 5 17.7 5c4.1 0 5.6 4 3.8 7.5C19.05 16.65 12 21 12 21z"/></svg><span class="dh-line"></span></div>
     </div>
     <div class="map-wrap" id="map-wrap">
-      <iframe id="map" src="https://www.google.com/maps/d/embed?mid=1WpnY1OurvQiLi72lWxbIGQWyZbeGpUI" title="Carte des hébergements autour de Courgenay" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <iframe id="map" src="https://www.google.com/maps/d/embed?mid=1WpnY1OurvQiLi72lWxbIGQWyZbeGpUI" title="Carte des hébergements autour de Courgenay" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       <p class="map-note"><a href="https://www.google.com/maps/d/viewer?mid=1WpnY1OurvQiLi72lWxbIGQWyZbeGpUI" target="_blank" rel="noopener"><span class="fr">Ouvrir la carte dans Google Maps</span><span class="pt">Abrir o mapa no Google Maps</span></a></p>
     </div>
     <div class="stay-list">
@@ -181,17 +183,6 @@
   <div class="fdate">07 · 08 · 2027</div>
 </footer>
 
-<script>
-  var langBtns = document.querySelectorAll('[data-set-lang]');
-  function setLang(l){
-    document.documentElement.setAttribute('data-lang', l);
-    document.documentElement.setAttribute('lang', l);
-    langBtns.forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-set-lang') === l); });
-    try{ localStorage.setItem('lang', l); }catch(e){}
-  }
-  langBtns.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.getAttribute('data-set-lang')); }); });
-  try{ var sl = localStorage.getItem('lang'); if(sl === 'fr' || sl === 'pt') setLang(sl); }catch(e){}
-
-</script>
+<script src="js/lang.js"></script>
 </body>
 </html>

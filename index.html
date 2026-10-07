@@ -2,6 +2,8 @@
 <html lang="fr" data-lang="fr">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://docs.google.com https://www.google.com; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Alexia &amp; Julien — Vous êtes invités</title>
 <meta name="description" content="Faire-part digital du mariage d'Alexia & Julien — 7 & 8 août 2027, Domaine de l'Abbaye de Vauluisant, Courgenay.">
@@ -265,41 +267,7 @@
   <div class="fdate">07 · 08 · 2027</div>
 </footer>
 
-<script>
-  var langBtns = document.querySelectorAll('[data-set-lang]');
-  function setLang(l){
-    document.documentElement.setAttribute('data-lang', l);
-    document.documentElement.setAttribute('lang', l);
-    langBtns.forEach(function(b){ b.classList.toggle('on', b.getAttribute('data-set-lang') === l); });
-    try{ localStorage.setItem('lang', l); }catch(e){}
-  }
-  langBtns.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.getAttribute('data-set-lang')); }); });
-  try{ var sl = localStorage.getItem('lang'); if(sl === 'fr' || sl === 'pt') setLang(sl); }catch(e){}
-
-  var target = new Date(2027, 7, 7, 15, 0, 0).getTime();
-  function pad(n){ return (n<10?'0':'')+n; }
-  var cdTimer;
-  function tick(){
-    var diff = target - Date.now(); if(diff<0) diff=0;
-    var s = Math.floor(diff/1000);
-    var set = function(k,v){ var el=document.querySelector('[data-cd="'+k+'"]'); if(el) el.textContent=v; };
-    set('days', Math.floor(s/86400)); set('hours', pad(Math.floor(s%86400/3600)));
-    set('mins', pad(Math.floor(s%3600/60))); set('secs', pad(s%60));
-    if(diff === 0 && cdTimer){ clearInterval(cdTimer); }
-  }
-  tick(); cdTimer = setInterval(tick, 1000);
-
-  var icsBtn = document.getElementById('ics');
-  if(icsBtn) icsBtn.addEventListener('click', function(){
-    var ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Alexia & Julien//Mariage 2027//FR','CALSCALE:GREGORIAN','BEGIN:VEVENT','UID:mariage-alexia-julien-2027@vauluisant','DTSTAMP:20260101T000000Z','DTSTART;VALUE=DATE:20270807','DTEND;VALUE=DATE:20270809','SUMMARY:Mariage d\'Alexia & Julien','LOCATION:Domaine de l\'Abbaye de Vauluisant\\, Courgenay','DESCRIPTION:Nous nous marions !','END:VEVENT','END:VCALENDAR'].join('\r\n');
-    var blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement('a'); a.href = url; a.download = 'mariage-alexia-julien-2027.ics';
-    document.body.appendChild(a); a.click(); document.body.removeChild(a);
-    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
-  });
-
-
-</script>
+<script src="js/lang.js"></script>
+<script src="js/home.js"></script>
 </body>
 </html>
