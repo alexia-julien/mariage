@@ -1,0 +1,48 @@
+# Publie la branche main à la racine (prod) et la branche test sous /test/ (test).
+name: Deploy site
+
+on:
+  push:
+    branches: [main, test]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout prod (main)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: prod
+      - name: Checkout test
+        uses: actions/checkout@v4
+        with:
+          ref: test
+          path: test
+      - name: Assemble site
+        run: |
+          mkdir _site
+          rsync -a --exclude='.git' --exclude='.github' prod/ _site/
+          mkdir _site/test
+          rsync -a --exclude='.git' --exclude='.github' test/ _site/test/
+          printf 'User-agent: *\nDisallow: /test/\n' > _site/robots.txt
+          touch _site/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
