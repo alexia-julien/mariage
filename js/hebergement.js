@@ -6,7 +6,6 @@
   var list = document.querySelector('.stay-list');
   if(!list) return;
   var stays = list.querySelectorAll('.stay[id]');
-  var reset = document.getElementById('seen-reset');
 
   function load(){
     try{ var v = JSON.parse(localStorage.getItem(KEY) || '[]'); return Array.isArray(v) ? v : []; }
@@ -27,7 +26,6 @@
         s.querySelector('.stay-name').appendChild(badge);
       } else if(!on && badge){ badge.remove(); }
     });
-    if(reset) reset.hidden = seen.length === 0;
   }
 
   function mark(e){
@@ -41,7 +39,6 @@
   list.addEventListener('click', mark);
   list.addEventListener('auxclick', mark); // clic molette (nouvel onglet)
 
-  if(reset) reset.addEventListener('click', function(){ save([]); render(); });
   window.addEventListener('storage', function(e){ if(e.key === KEY) render(); });
   render();
 })();
