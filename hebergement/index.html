@@ -112,6 +112,11 @@
   .stay-dist{font-size:.95rem;color:var(--ink-soft);margin-top:.05rem}
   .stay-place{font-size:1rem;font-weight:700;color:var(--sage-deep);margin-top:.15rem}
   .stay + .stay{border-top:1px solid var(--line)}
+  .seen-badge{display:inline-flex;align-items:center;gap:.3rem;vertical-align:middle;margin-left:.55rem;padding:.12rem .6rem;border-radius:999px;background:rgba(140,155,124,.16);color:var(--sage-deep);font-family:var(--body);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;line-height:1.6;white-space:nowrap}
+  .seen-badge::before{content:'✓';font-size:.8rem}
+  .stay.is-seen .stay-name{color:var(--ink-soft)}
+  .seen-reset{display:block;margin:1rem auto 0;border:0;background:none;cursor:pointer;font-family:var(--body);font-size:.92rem;color:var(--sage-deep);text-decoration:underline;text-underline-offset:.2em}
+  .seen-reset[hidden]{display:none}
   .stay-name{font-family:var(--display);font-weight:700;font-size:1.5rem;line-height:1.2;color:var(--ink)}
   .stay-note{font-size:.98rem;color:var(--ink-soft);margin-top:.15rem}
   .stay-links{display:flex;flex-wrap:wrap;gap:.15rem 1.3rem;margin-top:.45rem;font-size:1.08rem;font-weight:600}
@@ -200,6 +205,7 @@
 <div class="stay" id="h-atelier-des-sens"><div class="stay-name">Atelier des sens</div><div class="stay-place">Évry</div><div class="stay-dist"><span class="fr">à 25&nbsp;km du domaine</span><span class="pt">a 25&nbsp;km do local</span></div><div class="stay-links"><a href="tel:+33749281328">07 49 28 13 28</a><a href="https://en.tourisme-sens.com/?p=13418" target="_blank" rel="noopener"><span class="fr">Site web</span><span class="pt">Site</span></a><a href="https://www.google.com/maps/search/?api=1&query=Atelier%20des%20sens%20%C3%89vry" target="_blank" rel="noopener"><span class="fr">Voir sur la carte</span><span class="pt">Ver no mapa</span></a></div></div>
 <div class="stay" id="h-le-betrot"><div class="stay-name">Le Betrot</div><div class="stay-place">Estissac</div><div class="stay-dist"><span class="fr">à 28&nbsp;km du domaine</span><span class="pt">a 28&nbsp;km do local</span></div><div class="stay-links"><a href="tel:+33325415985">03 25 41 59 85</a><a href="https://www.booking.com/searchresults.fr.html?ss=Le+Betrot+Estissac" target="_blank" rel="noopener"><span class="fr">Voir sur Booking</span><span class="pt">Ver no Booking</span></a><a href="https://www.google.com/maps/search/?api=1&query=Le%20Betrot%20Estissac" target="_blank" rel="noopener"><span class="fr">Voir sur la carte</span><span class="pt">Ver no mapa</span></a></div></div>
     </div>
+    <button type="button" class="seen-reset" id="seen-reset" hidden><span class="fr">Effacer les logements marqués « Déjà consulté »</span><span class="pt">Apagar as marcações « Já visto »</span></button>
   </section>
 </main>
 
@@ -210,5 +216,6 @@
 </footer>
 
 <script src="../js/lang.js"></script>
+<script src="../js/hebergement.js"></script>
 </body>
 </html>
